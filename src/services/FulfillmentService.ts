@@ -1,5 +1,5 @@
 import { Repository } from "typeorm";
-import { Service } from "./Service";
+import { Service } from "./BaseService";
 import { ShipmentEntity, OrderEntity } from "../database/models";
 import { InventoryService } from "./InventoryService";
 import { OrderQueueService } from "./OrderQueueService";

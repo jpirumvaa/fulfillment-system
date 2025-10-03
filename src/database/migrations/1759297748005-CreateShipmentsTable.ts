@@ -4,7 +4,7 @@ import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm
  * Migration: Create shipments table for package tracking and fulfillment
  * 
  * Features:
- * - UUID primary key
+ * - Integer auto-increment primary key
  * - Foreign key relationship to orders table
  * - JSONB for flexible shipped items storage
  * - Mass tracking for weight compliance (1.8kg limit)

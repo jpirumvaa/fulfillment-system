@@ -4,7 +4,7 @@ import { MigrationInterface, QueryRunner, Table } from "typeorm";
  * Migration: Create products table for medical supply inventory
  * 
  * Features:
- * - UUID primary key with unique productId for external references
+ * - Integer auto-increment primary key with unique productId for external references
  * - Performance indexes on frequently queried fields
  * - Mass tracking in grams for shipping calculations
  * - Real-time stock quantity tracking

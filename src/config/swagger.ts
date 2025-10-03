@@ -10,7 +10,7 @@ const options: swaggerJsdoc.Options = {
         'A lightweight inventory management and order processing system for medical supply fulfillment',
       contact: {
         name: 'API Support',
-        email: 'support@zipline.com',
+        email: 'support@example.com',
       },
     },
     servers: [
@@ -19,7 +19,7 @@ const options: swaggerJsdoc.Options = {
         description: 'Development server',
       },
       {
-        url: 'https://api.zipline.com',
+        url: 'https://api.example.com',
         description: 'Production server',
       },
     ],

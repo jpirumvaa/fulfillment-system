@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import Controller from "../services/Controller";
+import Controller from "./BaseController";
 import { OrderEntity } from "../database/models";
 import { FulfillmentService } from "../services/FulfillmentService";
 import { sendResponse } from "../utils/sendResponse";

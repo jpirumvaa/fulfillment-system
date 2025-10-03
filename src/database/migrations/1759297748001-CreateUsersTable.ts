@@ -4,7 +4,7 @@ import { MigrationInterface, QueryRunner, Table } from "typeorm";
  * Migration: Create users table with authentication support
  * 
  * Features:
- * - UUID primary key
+ * - Integer auto-increment primary key
  * - Unique email constraint
  * - Email index for fast authentication lookups
  * - Timestamps for audit trail

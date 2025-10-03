@@ -4,7 +4,7 @@ import { MigrationInterface, QueryRunner, Table } from "typeorm";
  * Migration: Create orders table for order management and tracking
  * 
  * Features:
- * - UUID primary key with unique orderId for external references
+ * - Integer auto-increment primary key with unique orderId for external references
  * - JSONB columns for flexible item storage with PostgreSQL optimization
  * - Order status enum for lifecycle management
  * - Shipment tracking counter

@@ -1,6 +1,6 @@
 import { FindManyOptions, FindOneOptions } from "typeorm";
 
-import Controller from "../services/Controller";
+import Controller from "./BaseController";
 import { UserEntity } from "../database/models";
 import db from "../database";
 
