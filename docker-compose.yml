@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: zipline_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER:-zipline}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-zipline_password}
+      POSTGRES_DB: ${DB_NAME:-zipline}
+    ports:
+      - '${DB_PORT:-5433}:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - zipline_network
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${DB_USER:-zipline}']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: zipline_app
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: ${PORT:-3000}
+      DB_HOST_PROD: postgres
+      DB_PORT_PROD: 5432
+      DB_USER_PROD: ${DB_USER:-zipline}
+      DB_PASSWORD_PROD: ${DB_PASSWORD:-zipline_password}
+      DB_NAME_PROD: ${DB_NAME:-zipline}
+      JWT_SECRET: ${JWT_SECRET:-your-super-secret-jwt-key-change-in-production}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-24h}
+      RATEMAXCOUNT: ${RATEMAXCOUNT:-20}
+    ports:
+      - '${PORT:-3000}:3000'
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - zipline_network
+    healthcheck:
+      test: ['CMD', 'node', '-e', "require('http').get('http://localhost:3000/api/v1', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  zipline_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local

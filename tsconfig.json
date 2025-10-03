@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "commonjs",
+    "jsx": "preserve",
+    "outDir": "dist",
+    "rootDir": "src",
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": ["es2018", "esnext.asynciterable"],
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "strictPropertyInitialization": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noImplicitOverride": true,
+    "skipLibCheck": true,
+    "noImplicitAny": true
+  },
+  "exclude": ["node_modules, **/types/*"],
+  "include": ["./src/**/*"]
+}

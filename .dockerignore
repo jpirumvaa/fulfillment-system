@@ -1,0 +1,17 @@
+node_modules
+dist
+coverage
+logs
+*.log
+.env
+.env.local
+.git
+.gitignore
+README.md
+*.md
+tests
+.vscode
+.idea
+*.test.ts
+jest.config.js
+nodemon.json
